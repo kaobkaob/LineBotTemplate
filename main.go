@@ -24,9 +24,15 @@ import (
 
 var bot *linebot.Client
 
+const (
+	channelSecret      = "ef013359722736ac09f50f90e882c27d"
+	channelAccessToken = "N2GC2vxYyJyq/HMbPWH1XTN42L1VlP+I6noPw0f6qlLMgzU3n3DgivaTqmove6aKqJZOSkkr9dYoRFZPj+vpUMvzvIsm6VOlM65ccBQUe/FUNSpmmBTvlcFhelxg/+i36dapkffFwKLvtq7Smx3KOgdB04t8"
+)
+
 func main() {
 	var err error
-	bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
+	//bot, err = linebot.New(os.Getenv("ChannelSecret"), os.Getenv("ChannelAccessToken"))
+	bot, err = linebot.New(channelSecret, channelAccessToken)
 	log.Println("Bot:", bot, " err:", err)
 	http.HandleFunc("/callback", callbackHandler)
 	port := os.Getenv("PORT")
